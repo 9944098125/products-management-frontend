@@ -20,6 +20,8 @@ function EachShop() {
     id: 0,
   });
 
+  const [itemCount, setItemCount] = React.useState(0)
+
   React.useEffect(() => {
     dispatch(getProducts(params.id));
   }, [params.id, dispatch]);
@@ -45,6 +47,7 @@ function EachShop() {
     enableReinitialize: true,
   });
 
+
   const editProduct = (productId) => {
     setShowEditModal({ bool: true, id: productId });
   };
@@ -55,6 +58,7 @@ function EachShop() {
 
   const addProductToCart = (product) => {
     dispatch(addItemToCart(product))
+    setItemCount(count => count + 1)
   }
 
   return (
@@ -85,7 +89,10 @@ function EachShop() {
                 </button>
               </div>
             ) : (
-              <div className="d-flex justify-content-end">
+              <div className="d-flex align-items-center gap-3 justify-content-end">
+                <h4 className="text-warning">
+                  {itemCount !== 0 && itemCount}
+                </h4>
                 <button onClick={() => addProductToCart(product)} className="btn btn-success">+</button>
               </div>
             )}

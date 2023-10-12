@@ -21,6 +21,7 @@ function EachShop() {
   });
 
   const [itemCount, setItemCount] = React.useState(0)
+  const [index, setIndex] = React.useState(0)
 
   React.useEffect(() => {
     dispatch(getProducts(params.id));
@@ -56,9 +57,10 @@ function EachShop() {
     dispatch(deleteProduct(params.id, user?.id, productId))
   }
 
-  const addProductToCart = (product) => {
+  const addProductToCart = (product, idx) => {
     dispatch(addItemToCart(product))
-    setItemCount(count => count + 1)
+    setItemCount(prevCount => prevCount + 1)
+    setIndex(idx)
   }
 
   return (
@@ -91,9 +93,9 @@ function EachShop() {
             ) : (
               <div className="d-flex align-items-center gap-3 justify-content-end">
                 <h4 className="text-warning">
-                  {itemCount !== 0 && itemCount}
+                  {itemCount !== 0 && idx === index && itemCount}
                 </h4>
-                <button onClick={() => addProductToCart(product)} className="btn btn-success">+</button>
+                <button onClick={() => addProductToCart(product, idx)} className="btn btn-success">+</button>
               </div>
             )}
             <CreateProduct params={params} />

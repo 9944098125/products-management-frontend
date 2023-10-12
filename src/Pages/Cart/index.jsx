@@ -22,7 +22,7 @@ export default function Cart() {
                             className={`d-flex align-items-center justify-content-between`}>
                             <h5>{idx + 1}</h5>
                             <h4>
-                                ({product[1]} - {product[2]}) x {product[4] - 1}
+                                ({product[1]} - {product[2]}) x {product[4]}
                             </h4>
                             <button
                                 onClick={() => deleteProduct(product[0])}

@@ -1,0 +1,16 @@
+.shop-item {
+  box-shadow: var(--shadow);
+  min-height: 150px;
+  margin-bottom: 25px;
+  padding: 15px 25px;
+}
+.shop-name {
+  color: orangered;
+  font-weight: 700;
+  font-size: 25px;
+}
+.shop-desc {
+  color: deeppink;
+  font-weight: 600;
+  font-size: 18px;
+}
